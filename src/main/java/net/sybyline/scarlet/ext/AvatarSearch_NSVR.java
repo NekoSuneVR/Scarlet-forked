@@ -11,6 +11,7 @@ public interface AvatarSearch_VRCDS
 {
 
     public static final String API_ROOT = "https://api-avatar.nekosunevr.co.uk";
+    public static final String API_ROOT_SEARCH = "https://vrcavatarsearch.nekosunevr.co.uk";
 
     public static class PutAvatarExternalRequest
     {
