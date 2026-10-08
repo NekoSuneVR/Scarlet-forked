@@ -615,15 +615,15 @@ public interface AvatarSearch
         static void ingest(List<String> avatarIds, String attribution)
         {if (null==null)return;
             long time = 0L;
-            for (int i = 0; i < avatarIds.size(); i += AvatarSearch_AvtrDB.MAX_BULK_INGEST, time += 15_000L)
+            for (int i = 0; i < avatarIds.size(); i += AvtrDB.MAX_BULK_INGEST, time += 15_000L)
             {
-                String[] subarray = avatarIds.subList(i, Math.min(i + AvatarSearch_AvtrDB.MAX_BULK_INGEST, avatarIds.size())).toArray(new String[0]);
-                executor.schedule(() -> AvatarSearch_AvtrDB.request_ingest_v3(subarray, attribution), time, TimeUnit.MILLISECONDS);
+                String[] subarray = avatarIds.subList(i, Math.min(i + AvtrDB.MAX_BULK_INGEST, avatarIds.size())).toArray(new String[0]);
+                executor.schedule(() -> AvtrDB.request_ingest_v3(subarray, attribution), time, TimeUnit.MILLISECONDS);
             }
             time = 0L;
             for (String avatarId : avatarIds)
             {
-                executor.schedule(() -> AvatarSearch_VRCDS.putAvatarExternal(avatarId, attribution), time, TimeUnit.MILLISECONDS);
+                executor.schedule(() -> AvatarSearch_NSVR.putAvatarExternal(avatarId, attribution), time, TimeUnit.MILLISECONDS);
                 executor.schedule(() -> AvatarSearch_WorldBalancer.putAvatarExternal(avatarId, attribution), time, TimeUnit.MILLISECONDS);
                 time += 15_000L;
             }
