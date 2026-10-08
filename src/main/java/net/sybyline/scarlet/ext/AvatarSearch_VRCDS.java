@@ -5,12 +5,12 @@ import java.io.IOException;
 import net.sybyline.scarlet.util.HttpURLInputStream;
 
 /**
- * https://nekosunevr.co.uk
+ * https://vrcavatarsearch.nekosunevr.co.uk
  */
 public interface AvatarSearch_VRCDS
 {
 
-    public static final String API_ROOT = "https://avtr.nekosunevr.co.uk";
+    public static final String API_ROOT = "https://api-avatar.nekosunevr.co.uk";
 
     public static class PutAvatarExternalRequest
     {
